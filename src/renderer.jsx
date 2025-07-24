@@ -1,4 +1,4 @@
-import Main from "./Main.tsx";
+import Main from "./Main.jsx";
 import { createRoot } from "react-dom/client";
 import "./style.css";
 
