@@ -1,4 +1,3 @@
-import React from "react";
 import Intro from "./components/Intro";
 import { createRoot } from "react-dom/client";
 import "./style.css";

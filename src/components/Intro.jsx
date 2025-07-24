@@ -1,5 +1,3 @@
-import React from "react";
-
 import electron_logo from "../assets/electron.png";
 import reactrouter_logo from "../assets/reactrouter.png";
 import vitejs_logo from "../assets/vitejs.png";
