@@ -58,7 +58,7 @@ export default function SceneBar({ selectedSceneId, onSelect, onAdd, onDelete, o
   };
 
   return (
-    <aside className="border-r flex flex-col gap-y-3 w-60 p-6 bg-[#f4f6f8]">
+<aside className="hide-scrollbar flex flex-col gap-y-3 w-60 p-6 bg-[#f4f6f8] overflow-y-auto max-h-screen hide-scrollbar">
       <div className="flex justify-between items-center mb-3">
         <h3 className="text-sm font-medium text-[#070b11]">Scenes</h3>
         <button onClick={handleAdd} className="flex justify-center items-center w-[30px] h-[30px] rounded bg-[#212528]">

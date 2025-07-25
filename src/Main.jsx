@@ -18,7 +18,7 @@ export default function Main() {
   const handleSaveScript = (script) => alert('Script saved!');
 
   return (
-    <div className="flex w-full min-h-screen font-sans bg-[#f4f6f8]" style={{lineHeight:1.4}}>
+    <div className="flex w-full min-h-screen font-mono bg-[#f4f6f8]" style={{lineHeight:1.4}}>
       <SceneBar
         selectedSceneId={selectedSceneId}
         onSelect={handleSelectScene}
