@@ -1,10 +1,10 @@
-import Main from "./Main.jsx";
+import Index from "./Index.jsx";
 import { createRoot } from "react-dom/client";
 import "./style.css";
 
 const App = () => {
   return (
-    <Main />
+    <Index />
   );
 };
 const container = document.getElementById("root");

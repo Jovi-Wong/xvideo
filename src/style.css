@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "daisyui";
 
 body {
   font-family: Fira Mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
