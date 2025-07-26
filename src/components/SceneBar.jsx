@@ -42,7 +42,7 @@ export default function SceneBar({
   };
 
   const handleDragStart = (id) => setDraggedId(id);
-  const handleDragOver = (e, id) => {
+  const handleDragOver = (e) => {
     e.preventDefault();
   };
 

@@ -1,19 +1,12 @@
-import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
-const mockVideo = {
-  src: 'https://static.paraflowcontent.com/public/resource/image/067bd0aa-d95b-42f8-838a-c76b7f3c28fa.jpeg',
-  duration: 105,
-  current: 32,
+VideoPreview.propTypes = {
+  onExport: PropTypes.func.isRequired,
+  onShare: PropTypes.func.isRequired,
+  video: PropTypes.string.isRequired,
 };
 
 export default function VideoPreview({ onExport, onShare, video }) {
-  const [playing, setPlaying] = useState(false);
-  const [current, setCurrent] = useState(mockVideo.current);
-
-  const handlePlayPause = () => setPlaying(p => !p);
-  const handleStep = (step) => setCurrent(c => Math.max(0, Math.min(mockVideo.duration, c + step)));
-  const formatTime = s => `${String(Math.floor(s/60)).padStart(2,'0')}:${String(s%60).padStart(2,'0')}`;
-
   return (
     <section className="w-full flex flex-col gap-y-4 bg-white p-4 rounded-lg">
       <div className="flex justify-between items-center">

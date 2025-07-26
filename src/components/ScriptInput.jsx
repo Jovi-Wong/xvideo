@@ -1,6 +1,13 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import PropTypes from 'prop-types';
 
 const initialScript = `INT. FUTURISTIC APARTMENT - DAY\nA sleek, minimalist living space with floating holographic displays and smart furniture. Large windows reveal a cityscape with flying vehicles.\nALEX (30s, confident) paces while dictating to an AI assistant.\nALEX\nI need to create a presentation that will blow everyone away at the board meeting tomorrow.\nThe AI assistant responds with a holographic display showing various design templates and options.\nAI VOICE\nBased on your previous presentations and current trends, I've prepared several options for you to review.\nAlex smiles, impressed by the AI's suggestions.`;
+
+ScriptInputBox.propTypes = {
+  sceneId: PropTypes.number.isRequired,
+  text: PropTypes.string.isRequired,
+  onSave: PropTypes.func.isRequired,
+};
 
 export default function ScriptInputBox({ sceneId, text, onSave }) {
   const [script, setScript] = useState(initialScript);

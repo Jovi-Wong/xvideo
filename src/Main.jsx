@@ -27,11 +27,11 @@ export default function Main() {
   const handleSelectScene = (id) => setSelectedSceneId(id);
   const handleAddScene = (scene) => alert(`Add scene: ${scene.name}`);
   const handleDeleteScene = (id) => alert(`Delete scene: ${id}`);
-  const handleReorderScenes = (scenes) => alert("Scenes reordered");
+  const handleReorderScenes = () => alert("Scenes reordered");
   const handleExport = () => alert("Export video");
   const handleShare = () => alert("Share video");
   const handleGenerate = (prompt) => alert(`Generate with prompt: ${prompt}`);
-  const handleSaveScript = (script) => alert("Script saved!");
+  const handleSaveScript = () => alert("Script saved!");
 
   return (
     <div className="flex w-full min-h-screen font-mono bg-white">
