@@ -6,20 +6,20 @@ SceneBar.propTypes = {
   sceneData: PropTypes.arrayOf(object).isRequired,
   setSceneData: PropTypes.func.isRequired,
   selectedSceneId: PropTypes.number.isRequired,
-  onSelect: PropTypes.func,
-  onAdd: PropTypes.func,
-  onDelete: PropTypes.func,
-  onReorder: PropTypes.func,
+  handleSelectScene: PropTypes.func,
+  handleAddScene: PropTypes.func,
+  handleDeleteScene: PropTypes.func,
+  handleReorderScenes: PropTypes.func,
 };
 
 export default function SceneBar({
   sceneData,
   setSceneData,
   selectedSceneId,
-  onSelect,
-  onAdd,
-  onDelete,
-  onReorder,
+  handleSelectScene,
+  handleAddScene,
+  handleDeleteScene,
+  handleReorderScenes,
 }) {
   const [draggedId, setDraggedId] = useState(null);
 
@@ -33,12 +33,12 @@ export default function SceneBar({
       thumbnail: sceneData[0]?.thumbnail,
     };
     setSceneData([...sceneData, newScene]);
-    onAdd && onAdd(newScene);
+    handleAddScene && handleAddScene(newScene);
   };
 
   const handleDelete = (id) => {
     setSceneData(sceneData.filter((s) => s.id !== id));
-    onDelete && onDelete(id);
+    handleDeleteScene && handleDeleteScene(id);
   };
 
   const handleDragStart = (id) => setDraggedId(id);
@@ -55,12 +55,12 @@ export default function SceneBar({
     reordered.splice(toIdx, 0, moved);
     setSceneData(reordered);
     setDraggedId(null);
-    onReorder && onReorder(reordered);
+    handleReorderScenes && handleReorderScenes(reordered);
   };
 
   return (
-    <aside className="w-full hide-scrollbar flex flex-col gap-y-3 p-6 bg-white overflow-y-auto max-h-screen">
-      <div className="flex justify-between items-center mb-3">
+    <aside className="w-full hide-scrollbar flex flex-col gap-y-3 px-6 bg-white overflow-y-auto max-h-screen">
+      <div className="sticky pt-4 pb-2 top-0 flex justify-between items-center mb-3 bg-white">
         <h3 className="text-sm font-medium text-[#070b11]">Scenes</h3>
         <button
           onClick={handleAdd}
@@ -76,7 +76,7 @@ export default function SceneBar({
           style={
             selectedSceneId === scene.id ? { border: "2px solid #212528" } : {}
           }
-          onClick={() => onSelect && onSelect(scene.id)}
+          onClick={() => handleSelectScene && handleSelectScene(scene.id)}
           draggable
           onDragStart={() => handleDragStart(scene.id)}
           onDragOver={(e) => handleDragOver(e, scene.id)}

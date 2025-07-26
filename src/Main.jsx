@@ -17,9 +17,9 @@ import video4 from "../asset/video/scene-4.mp4";
 export default function Main() {
   const [selectedSceneId, setSelectedSceneId] = useState(1);
   const [sceneData, setSceneData] = useState([
-    { id: 0, name: "外星人入侵地球", thumbnail: scene1, video: video1, aside: "本来平静的一天突然来了一群开着银河战舰的外星人" },
-    { id: 1, name: "哥哥用篮球反击", thumbnail: scene2, video: video2, aside: "地球人被炸的四散奔逃，哥哥把篮球扔向了外星人的银河战舰" },
-    { id: 2, name: "篮球击落银河战舰", thumbnail: scene3, video: video3, aside: "篮球势大力沉地击中了飞船引发了剧烈爆炸" },
+    { id: 0, name: "外星人入侵地球", thumbnail: scene1, video: video1, aside: "这本来是地球又一个平静的日子，谁知突然来了一群开着银河战舰的外星人" },
+    { id: 1, name: "哥哥用篮球反击", thumbnail: scene2, video: video2, aside: "地球人被炸的四散奔逃，坤哥一怒之下把篮球扔向了外星人的银河战舰" },
+    { id: 2, name: "篮球击落银河战舰", thumbnail: scene3, video: video3, aside: "篮球势大力沉地击中了飞船，引发了剧烈爆炸" },
     { id: 3, name: "外星人向人类投降", thumbnail: scene4, video: video4, aside: "飞船被击落后落在了满是废墟的城市，外星人走出舱门向人类投降" },
   ]);
 
@@ -40,10 +40,10 @@ export default function Main() {
           sceneData={sceneData}
           setSceneData={setSceneData}
           selectedSceneId={selectedSceneId}
-          onSelect={handleSelectScene}
-          onAdd={handleAddScene}
-          onDelete={handleDeleteScene}
-          onReorder={handleReorderScenes}
+          handleSelectScene={handleSelectScene}
+          handleAddScene={handleAddScene}
+          handleDeleteScene={handleDeleteScene}
+          handleReorderScenes={handleReorderScenes}
         />
       </div>
 
