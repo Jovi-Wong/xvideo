@@ -1,40 +1,40 @@
-import { useState } from 'react'
-import { Paperclip, ArrowUp } from "lucide-react"
-import logo from './imgs/logo.png'
-import jitoka from './imgs/jitoka.jpeg'
-import lowpoly from './imgs/lowpoly.jpg'
-import pixel from './imgs/pixel.jpeg'
-import TreeModel from './components/TreeModel.jsx'
+import { useState, useEffect, useContext, useRef } from "react";
+import { Paperclip, ArrowUp } from "lucide-react";
+import logo from "./imgs/logo.png";
+import jitoka from "./imgs/jitoka.jpeg";
+import lowpoly from "./imgs/lowpoly.jpg";
+import pixel from "./imgs/pixel.jpeg";
+import TreeModel from "./components/TreeModel.jsx";
 import Main from "./Main.jsx";
+import { ConnContext } from "./context/ConnProvider.jsx";
+import { ScriptContext } from "./context/ScriptProvider.jsx";
 
 export default function HomePage() {
   const [showTreeModel, setShowTreeModel] = useState(false);
-  const [showMain, setShowMain] = useState(false); 
+  const [showMain, setShowMain] = useState(false);
+  const inputRef = useRef(null);
+  const { setStory } = useContext(ScriptContext);
+
   // 1. 上传附件功能函数
-  const handleUploadAttachment =  (event) => {
-    // 创建一个隐藏的文件输入框
-    const input = document.createElement('input');
-    input.type = 'file';
-    input.onchange = (e) => {
-      const file = e.target.files[0];
-      if (file) {
-        // 这里可以处理文件上传逻辑
-        alert(`已选择文件: ${file.name}`);
-        // 例如：上传到服务器、显示预览等
-      }
-    };
-    input.click();
-  }
+  // const handleUploadAttachment = (event) => {
+  //   const input = document.createElement("input");
+  //   input.type = "file";
+  //   input.onchange = (e) => {
+  //     const file = e.target.files[0];
+  //     if (file) {
+  //       alert(`已选择文件: ${file.name}`);
+  //     }
+  //   };
+  //   input.click();
+  // };
 
   // 2. 输入指令功能函数
-  // 这里可以获取输入框的内容并处理
-  // 例如：发送到后端、执行某个操作等
-  // alert('指令已发送');
-  const handleSendCommand =  () => {
-   setShowTreeModel(true)
-  }
+  const handleSendCommand = () => {
+    setShowTreeModel(true);
+    setStory(inputRef.current.value);
+  };
 
- if (showMain) {
+  if (showMain) {
     return <Main />;
   }
   if (showTreeModel) {
@@ -47,11 +47,15 @@ export default function HomePage() {
       <main className="container mx-auto px-4 py-16">
         {/* Hero Section */}
         <div className="text-center mb-12">
-        <div className="flex items-center gap-4 mb-4">
-  <img src={logo} alt="XVideo Logo" className="w-20 h-20" />
-  <h1 className="text-6xl font-bold text-gray-900">AI-generated long videos</h1>
-</div>
-          <p className="text-xl text-gray-600 mb-12">Your stories deserve more than just words</p>
+          <div className="flex items-center gap-4 mb-4">
+            <img src={logo} alt="XVideo Logo" className="w-20 h-20" />
+            <h1 className="text-6xl font-bold text-gray-900">
+              AI-generated long videos
+            </h1>
+          </div>
+          <p className="text-xl text-gray-600 mb-12">
+            Your stories deserve more than just words
+          </p>
 
           {/* Input Section */}
           <div className="max-w-4xl mx-auto mb-16">
@@ -61,15 +65,16 @@ export default function HomePage() {
                   placeholder="Input your article for AI video creation"
                   className="input flex-1 input-ghost focus:outline-none focus:ring-0"
                   type="text"
+                  ref={inputRef}
                 />
                 <div className="flex items-center gap-2">
-                  <button
+                  {/* <button
                     className="btn btn-ghost border-0"
                     size="sm"
                     onClick={handleUploadAttachment}
                   >
                     <Paperclip className="w-4 h-4" />
-                  </button>
+                  </button> */}
                   <div className="flex items-center gap-2 text-sm text-gray-500">
                     <button
                       className="btn btn-ghost border-0"
@@ -108,7 +113,11 @@ export default function HomePage() {
           {/* Retro Style */}
           <div className="bg-white rounded-lg overflow-hidden shadow-sm border border-gray-200">
             <div className="aspect-[4/3] bg-gradient-to-br from-orange-50 to-red-50 p-4">
-              <img src={jitoka} alt="Retro Style" className="w-full h-full object-cover rounded-lg" />
+              <img
+                src={jitoka}
+                alt="Retro Style"
+                className="w-full h-full object-cover rounded-lg"
+              />
             </div>
             <div className="p-4">
               <div className="flex items-center justify-between">
@@ -123,7 +132,11 @@ export default function HomePage() {
           {/* Low Poly Style */}
           <div className="bg-white rounded-lg overflow-hidden shadow-sm border border-gray-200">
             <div className="aspect-[4/3] bg-gradient-to-br from-green-50 to-teal-50 p-4">
-              <img src={lowpoly} alt="Low Poly Style" className="w-full h-full object-cover rounded-lg" />
+              <img
+                src={lowpoly}
+                alt="Low Poly Style"
+                className="w-full h-full object-cover rounded-lg"
+              />
             </div>
             <div className="p-4">
               <div className="flex items-center justify-between">
@@ -137,5 +150,5 @@ export default function HomePage() {
         </div>
       </main>
     </div>
-  )
+  );
 }
