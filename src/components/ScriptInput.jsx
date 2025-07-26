@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 const initialScript = `INT. FUTURISTIC APARTMENT - DAY\nA sleek, minimalist living space with floating holographic displays and smart furniture. Large windows reveal a cityscape with flying vehicles.\nALEX (30s, confident) paces while dictating to an AI assistant.\nALEX\nI need to create a presentation that will blow everyone away at the board meeting tomorrow.\nThe AI assistant responds with a holographic display showing various design templates and options.\nAI VOICE\nBased on your previous presentations and current trends, I've prepared several options for you to review.\nAlex smiles, impressed by the AI's suggestions.`;
 
-export default function ScriptInputBox({ sceneId, onSave }) {
+export default function ScriptInputBox({ sceneId, text, onSave }) {
   const [script, setScript] = useState(initialScript);
   const [history, setHistory] = useState([initialScript]);
   const [historyIdx, setHistoryIdx] = useState(0);
@@ -28,7 +28,7 @@ export default function ScriptInputBox({ sceneId, onSave }) {
   const handleSave = () => onSave && onSave(script);
 
   return (
-    <aside className="flex flex-col gap-y-3 w-[300px] p-6 bg-[#f4f6f8]">
+    <aside className="w-full flex flex-col gap-y-3 px-2 bg-[#f4f6f8]">
       <div className="flex justify-between items-center mb-3">
         <h3 className="text-sm font-medium text-[#070b11]">Script</h3>
         <div className="flex gap-x-1.5">
@@ -44,7 +44,7 @@ export default function ScriptInputBox({ sceneId, onSave }) {
         <textarea
           className="grow shrink w-full text-xs text-[#070b11] bg-transparent"
           rows={12}
-          value={script}
+          value={text}
           onChange={handleChange}
         />
         <div className="flex justify-between">

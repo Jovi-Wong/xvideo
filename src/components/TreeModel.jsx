@@ -23,7 +23,7 @@ import { ScriptContext } from "../context/ScriptProvider.jsx";
 const treeData = [
   {
     id: "1",
-    label: "《青春校园》剧本分镜转换",
+    label: "小黑子拯救世界",
     type: "topic",
   },
   {
@@ -31,11 +31,10 @@ const treeData = [
     label: "分镜大纲",
     type: "toc",
     children: [
-      { id: "2-1", label: "1. 开场序幕 - 校园晨光", type: "content" },
-      { id: "2-2", label: "2. 主角登场 - 教室相遇", type: "content" },
-      { id: "2-3", label: "3. 冲突升级 - 走廊争执", type: "content" },
-      { id: "2-4", label: "4. 情感转折 - 天台对话", type: "content" },
-      { id: "2-5", label: "5. 结局升华 - 毕业典礼", type: "content" },
+      { id: "2-1", label: "1. 外星人入侵地球", type: "content" },
+      { id: "2-2", label: "2. 哥哥用篮球反击", type: "content" },
+      { id: "2-3", label: "3. 篮球击落银河战舰", type: "content" },
+      { id: "2-4", label: "4. 外星人向人类投降", type: "content" },
     ],
   },
 ];
