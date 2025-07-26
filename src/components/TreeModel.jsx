@@ -6,6 +6,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { ScrollArea } from "./ui/scroll-area"
 import { Badge } from "./ui/badge"
 import { ChevronRight, RotateCcw } from "lucide-react"
+import Main from "../Main.jsx";
 
 
 const treeData = [
@@ -115,15 +116,14 @@ const TreeItem = ({ node, level = 0 }) => {
 }
 
 export default function Component() {
-  const [open, setOpen] = useState(false)
-
+  const [open, setOpen] = useState(true)
+  const [showMain, setShowMain] = useState(false); 
+ if (showMain) {
+    return <Main />;
+  }
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-50">
-      <Button>打开大纲编辑器</Button>
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogTrigger asChild>
-          <Button>打开大纲编辑器</Button>
-        </DialogTrigger>
         <DialogContent className="max-w-4xl max-h-[90vh] p-0">
           <DialogHeader className="p-6 pb-4">
             <DialogTitle className="text-lg font-medium text-gray-700">您可以在下方随意编辑大纲内容</DialogTitle>
@@ -144,7 +144,7 @@ export default function Component() {
               <RotateCcw className="w-4 h-4" />
               重新解析剧本
             </Button>
-            <Button className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700">
+            <Button className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700" onClick={() => setShowMain(true)}>
               生成分镜脚本
               <ChevronRight className="w-4 h-4" />
             </Button>

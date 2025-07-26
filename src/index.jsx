@@ -5,9 +5,11 @@ import jitoka from './imgs/jitoka.jpeg'
 import lowpoly from './imgs/lowpoly.jpg'
 import pixel from './imgs/pixel.jpeg'
 import TreeModel from './components/TreeModel.jsx'
+import Main from "./Main.jsx";
 
 export default function HomePage() {
   const [showTreeModel, setShowTreeModel] = useState(false);
+  const [showMain, setShowMain] = useState(false); 
   // 1. 上传附件功能函数
   const handleUploadAttachment =  (event) => {
     // 创建一个隐藏的文件输入框
@@ -25,12 +27,16 @@ export default function HomePage() {
   }
 
   // 2. 输入指令功能函数
+  // 这里可以获取输入框的内容并处理
+  // 例如：发送到后端、执行某个操作等
+  // alert('指令已发送');
   const handleSendCommand =  () => {
-    // 这里可以获取输入框的内容并处理
-    // 例如：发送到后端、执行某个操作等
-    alert('执行输入指令功能');
+   setShowTreeModel(true)
   }
 
+ if (showMain) {
+    return <Main />;
+  }
   if (showTreeModel) {
     return <TreeModel />;
   }
@@ -39,15 +45,6 @@ export default function HomePage() {
     <div className="min-h-screen bg-gray-50">
       {/* Main Content */}
       <main className="container mx-auto px-4 py-16">
-        {/* Jump to TreeModel Button */}
-        <div className="mb-8 text-right">
-          <button
-            className="btn btn-primary px-4 py-2 rounded bg-blue-600 text-white hover:bg-blue-700"
-            onClick={() => setShowTreeModel(true)}
-          >
-            跳转到 TreeModel
-          </button>
-        </div>
         {/* Hero Section */}
         <div className="text-center mb-12">
         <div className="flex items-center gap-4 mb-4">
